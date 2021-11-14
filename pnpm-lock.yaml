@@ -8,6 +8,7 @@ specifiers:
   eslint: ^8.2.0
   eslint-config-airbnb-base: ^15.0.0
   eslint-config-prettier: ^8.3.0
+  eslint-import-resolver-typescript: ^2.5.0
   eslint-plugin-import: ^2.25.2
   eslint-plugin-prettier: ^4.0.0
   jest: ^27.3.1
@@ -30,6 +31,7 @@ devDependencies:
   eslint: registry.npmmirror.com/eslint/8.2.0
   eslint-config-airbnb-base: registry.npmmirror.com/eslint-config-airbnb-base/15.0.0_6e04a54c7bcd7530b1a4c2da0aa486b1
   eslint-config-prettier: registry.nlark.com/eslint-config-prettier/8.3.0_eslint@8.2.0
+  eslint-import-resolver-typescript: registry.npmmirror.com/eslint-import-resolver-typescript/2.5.0_6e04a54c7bcd7530b1a4c2da0aa486b1
   eslint-plugin-import: registry.npmmirror.com/eslint-plugin-import/2.25.3_eslint@8.2.0
   eslint-plugin-prettier: registry.npmmirror.com/eslint-plugin-prettier/4.0.0_307f015733298e29da9050ea0cee5b9e
   jest: registry.npmmirror.com/jest/27.3.1_ts-node@10.4.0
@@ -3535,6 +3537,27 @@ packages:
       object.assign: registry.nlark.com/object.assign/4.1.2
       object.entries: registry.npmmirror.com/object.entries/1.1.5
       semver: registry.nlark.com/semver/6.3.0
+    dev: true
+
+  registry.npmmirror.com/eslint-import-resolver-typescript/2.5.0_6e04a54c7bcd7530b1a4c2da0aa486b1:
+    resolution: { integrity: sha1-B2YZZrJy0Uupf1l7UeGliPlyLwo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/eslint-import-resolver-typescript/download/eslint-import-resolver-typescript-2.5.0.tgz }
+    id: registry.npmmirror.com/eslint-import-resolver-typescript/2.5.0
+    name: eslint-import-resolver-typescript
+    version: 2.5.0
+    engines: { node: '>=4' }
+    peerDependencies:
+      eslint: '*'
+      eslint-plugin-import: '*'
+    dependencies:
+      debug: registry.npmmirror.com/debug/4.3.2
+      eslint: registry.npmmirror.com/eslint/8.2.0
+      eslint-plugin-import: registry.npmmirror.com/eslint-plugin-import/2.25.3_eslint@8.2.0
+      glob: registry.npmmirror.com/glob/7.2.0
+      is-glob: registry.npmmirror.com/is-glob/4.0.3
+      resolve: registry.nlark.com/resolve/1.20.0
+      tsconfig-paths: registry.nlark.com/tsconfig-paths/3.11.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   registry.npmmirror.com/eslint-module-utils/2.7.1:
