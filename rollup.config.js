@@ -3,11 +3,6 @@ import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 
 const input = "src/index.ts";
-const plugins = [
-  typescript(),
-  commonjs(),
-  resolve({ jsnext: true, main: true, browser: true }),
-];
 const external = ["ramda"];
 export default [
   {
@@ -17,7 +12,13 @@ export default [
       format: "cjs",
     },
     external,
-    plugins,
+    plugins: [
+      typescript({
+        declarationDir: "./dist",
+      }),
+      commonjs(),
+      resolve(),
+    ],
   },
   {
     input,
@@ -26,6 +27,12 @@ export default [
       format: "es",
     },
     external,
-    plugins,
+    plugins: [
+      typescript({
+        declarationDir: "./lib",
+      }),
+      commonjs(),
+      resolve(),
+    ],
   },
 ];
