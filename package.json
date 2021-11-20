@@ -8,6 +8,10 @@
     "eslint": "eslint",
     "build": "rollup -c rollup.config.js"
   },
+  "files": [
+    "lib",
+    "dist"
+  ],
   "keywords": [
     "rxjs",
     "FP",
