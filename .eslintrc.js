@@ -24,6 +24,7 @@ module.exports = {
         tsx: "never",
       },
     ],
+    "no-use-before-define": ["error", { functions: false }],
     // "import/prefer-default-export": "warning",
   },
   settings: {
