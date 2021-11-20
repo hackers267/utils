@@ -1,4 +1,4 @@
-import { calcBirthday, calcSex } from "./index";
+import { calcBirthday, calcSex, verity } from "./index";
 
 describe("calcBirthday", () => {
   it("should be true", () => {
@@ -29,5 +29,25 @@ describe("calcSex", () => {
     const actual: string = "男";
     const result = calcSex(no);
     expect(result).toBe(actual);
+  });
+});
+
+describe("verity", () => {
+  it("should be true", () => {
+    const no: string = "34052419800101001X";
+    const result = verity(no);
+    expect(result).toBeTruthy();
+  });
+
+  it("should be false", () => {
+    const no: string = "340524198001010010";
+    const result = verity(no);
+    expect(result).toBeFalsy();
+  });
+
+  it("should be false lt 18 bit", () => {
+    const no: string = "34052419800101001";
+    const result = verity(no);
+    expect(result).toBeFalsy();
   });
 });
