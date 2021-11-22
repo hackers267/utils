@@ -50,4 +50,10 @@ describe("verity", () => {
     const result = verity(no);
     expect(result).toBeFalsy();
   });
+
+  it("should be false wrong style", () => {
+    const no: string = "34052419800101001Y";
+    const result = verity(no);
+    expect(result).toBeFalsy();
+  });
 });
