@@ -9,6 +9,7 @@
     "test:w": "jest --watch",
     "eslint": "eslint",
     "build": "rollup -c rollup.config.js",
+    "release": "release-it",
     "prebuild": "rimraf ./dist ./lib"
   },
   "files": [
@@ -46,6 +47,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "^27.3.1",
     "prettier": "^2.4.1",
+    "release-it": "^15.10.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.60.0",
     "rollup-plugin-dts": "^4.0.1",
