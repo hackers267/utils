@@ -1,4 +1,5 @@
 export * from "./bool";
 export * from "./func";
-export * from "./idCard/index";
-export * from "./simple/index";
+export * from "./idCard";
+export * from "./simple";
+export * from "./area";
