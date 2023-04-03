@@ -6,7 +6,11 @@
 import { __, last, map, modulo, pipe, split, sum, zip } from "ramda";
 
 export function calcBirthday(no: string) {
-  return no.slice(6, 14);
+  const str = no.slice(6, 14);
+  const year = str.slice(0, 4);
+  const month = str.slice(4, 6);
+  const day = str.slice(6);
+  return `${year}-${month}-${day}`;
 }
 
 /**

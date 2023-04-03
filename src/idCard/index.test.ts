@@ -3,14 +3,14 @@ import { calcBirthday, calcSex, verity } from "./index";
 describe("calcBirthday", () => {
   it("should be true", () => {
     const no: string = "110225196403026127";
-    const actual: string = "19640302";
+    const actual: string = "1964-03-02";
     const result = calcBirthday(no);
     expect(actual).toBe(result);
   });
 
   it("should be true", () => {
     const no: string = "5101031965020834352";
-    const actual: string = "19650208";
+    const actual: string = "1965-02-08";
     const result = calcBirthday(no);
     expect(result).toBe(actual);
   });
