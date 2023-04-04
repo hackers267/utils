@@ -82,7 +82,7 @@ export function verity(no: string): boolean {
     return zipCoefficient(getArray()(str));
   }
 
-  function calcSum(twoDimensionalArray: [number, number][]) {
+  function calcSum(twoDimensionalArray: Array<[number, number]>) {
     const mapMultiply = map(multiply);
     const data = mapMultiply(twoDimensionalArray);
     return sum(data);
