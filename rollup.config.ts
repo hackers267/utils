@@ -1,7 +1,4 @@
 import typescript from "@rollup/plugin-typescript";
-import commonjs from "@rollup/plugin-commonjs";
-import resolve from "@rollup/plugin-node-resolve";
-import dts from "rollup-plugin-dts";
 
 const input = "src/index.ts";
 const external = ["ramda"];
@@ -9,27 +6,19 @@ export default [
   {
     input,
     output: {
-      dir: "dist",
+      file: "dist/index.js",
       format: "cjs",
     },
     external,
-    plugins: [typescript({}), commonjs(), resolve()],
+    plugins: [typescript({})],
   },
   {
     input,
     output: {
-      dir: "./types",
-      format: "es",
-    },
-    plugins: [dts()],
-  },
-  {
-    input,
-    output: {
-      dir: "lib",
+      file: "dist/index.esm.js",
       format: "es",
     },
     external,
-    plugins: [typescript({}), commonjs(), resolve()],
+    plugins: [typescript({})],
   },
 ];

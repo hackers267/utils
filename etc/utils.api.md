@@ -4,34 +4,27 @@
 
 ```ts
 
-// @public (undocumented)
+// @public
 export class Area {
     add(other: Area): Area;
-
     static new(value: number, unit?: Unit): Area;
-
     sub(other: Area): Area;
-
     toString(): string;
-
     // (undocumented)
     readonly unit: Unit;
     // (undocumented)
     readonly value: number;
 }
 
-// @public (undocumented)
+// @public
 export function calcBirthday(no: string): string;
 
 // @public
 export function calcSex(no: string): "男" | "女";
 
-// @public (undocumented)
+// @public
 export class Distance {
-    constructor(value: number, unit: Unit_2);
-
     add(other: Distance): Distance;
-
     div(factor: number): Distance;
 
     // Warning: (ae-forgotten-export) The symbol "Format" needs to be exported by the entry point index.d.ts
@@ -39,12 +32,10 @@ export class Distance {
 
     mul(factor: number): Distance;
 
-    static new(value: number, unit?: Unit_2): Distance;
+    static new(value: number, unit?: DistanceUnit): Distance;
 
     sub(other: Distance): Distance;
-
     toCm(): Distance;
-
     toDm(): Distance;
 
     toKm(): Distance;
@@ -55,36 +46,37 @@ export class Distance {
 
     toString(): string;
 
-    // Warning: (ae-forgotten-export) The symbol "Unit_2" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
-    readonly unit: Unit_2;
+    readonly unit: DistanceUnit;
     // (undocumented)
     readonly value: number;
 }
 
-// @public (undocumented)
+// @public
+export type DistanceUnit = "mm" | "cm" | "dm" | "m" | "km";
+
+// @public
 export function isEven(n: number): boolean;
 
-// @public (undocumented)
-export const isFalse: (value: any) => boolean;
+// @public
+export function isFalse(value: any): boolean;
 
-// @public (undocumented)
+// @public
 export function isOdd(n: number): boolean;
 
-// @public (undocumented)
+// @public
 export function isTrue(value: any): boolean;
 
-// @public (undocumented)
+// @public
 export type Unit = "mm2" | "cm2" | "dm2" | "m2" | "km2";
 
 // @public
 export function verity(no: string): boolean;
 
-// @public (undocumented)
+// @public
 export function whenFalse(fn: () => void): (a: any) => any;
 
-// @public (undocumented)
+// @public
 export function whenTrue(fn: () => void): (a: any) => any;
 
 // (No @packageDocumentation comment for this package)

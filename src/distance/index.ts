@@ -1,5 +1,16 @@
-// 距离对象的具体单位
+/**
+ * Distance对象, 包含一个值和一个单位。用于距离的表示和计算。
+ */
+
+/**
+ * 距离对象的具体单位
+ *
+ * @public
+ *
+ * @typeParam Unit - 距离对象的具体单位
+ */
 type Unit = "mm" | "cm" | "dm" | "m" | "km";
+export type { Unit as DistanceUnit };
 const scale = {
   mm: 1,
   cm: 10,
@@ -13,26 +24,28 @@ interface Format {
   unit?: boolean;
 }
 
+/**
+ * Distance对象, 包含一个值和一个单位。用于距离的表示和计算。
+ *
+ * @public
+ */
 export class Distance {
   /**
    * Distance对象构造器
    *
-   *
-   * @param  value: - Distance对象的值
-   * @param unit: - Distance对象的单位 @see Unit
-   *
-   * @return Distance - Distance对象
+   * @returns Distance - Distance对象
    */
-  constructor(readonly value: number, readonly unit: Unit) {}
+  private constructor(readonly value: number, readonly unit: Unit) {}
 
   /**
    * new 方法是创建Distance对象的静态方法，返回一个新的Distance对象。其接收两个参数，一个是Distance对象的值，一个是Distance对象的单位。如果没有指定单位，其默认为&quot;m&quot; (meters)。
    *
-   * @param value: number - Distance对象的值
-   * @param unit: Unit - Distance对象的单位 @see Unit
+   * @param value - Distance对象的值
+   * @param unit - Distance对象的单位 @see Unit
    *
-   * @return Distance - Distance对象
+   * @returns Distance - Distance对象
    *
+   * @public
    */
   static new(value: number, unit: Unit = "m"): Distance {
     return new Distance(value, unit);
@@ -41,7 +54,9 @@ export class Distance {
   /**
    * 返回Distance对象的字符串表示
    *
-   * @return string - Distance对象的字符串表示
+   * @returns string - Distance对象的字符串表示
+   *
+   * @public
    */
   toString(): string {
     return this.value.toFixed(2) + this.unit;
@@ -51,6 +66,8 @@ export class Distance {
    * 两个距离想加
    * @param other - 另一个距离对象
    * @returns - 返回两个距离对象的和
+   *
+   * @public
    */
   add(other: Distance): Distance {
     const factor = scale[this.unit] / scale[other.unit];
@@ -64,6 +81,8 @@ export class Distance {
    * 两个距离相减
    * @param other - 另一个距离
    * @returns - 返回两个距离对象的差
+   *
+   * @public
    */
   sub(other: Distance): Distance {
     const factor = scale[this.unit] / scale[other.unit];
@@ -77,7 +96,9 @@ export class Distance {
    * 显示格式化输出，如果没有指定精度，默认为2，如果没有指定单位，默认为true.
    * @param precision - 指定精度
    * @param unit - 指定是否显示单位
-   * @returns {string} - 格式化的字符串
+   * @returns - 格式化的字符串
+   *
+   * @public
    */
   format({ precision = 2, unit = true }: Format): string {
     const value = this.value.toFixed(precision);
@@ -141,7 +162,7 @@ export class Distance {
 
   /**
    * Distance对象的乘法
-   * @param factor number - 因子
+   * @param factor - 因子
    *
    * @returns Distance - Distance对象
    *
@@ -154,7 +175,7 @@ export class Distance {
   /**
    * Distance对象的除法
    *
-   * @param factor: number - 除数
+   * @param factor - 除数
    *
    * @returns Distance - Distance对象
    *
@@ -171,7 +192,7 @@ export class Distance {
    *
    * @returns Distance - Distance对象
    *
-   * @private
+   * @internal
    */
   private to(unit: Unit): Distance {
     const factor = scale[this.unit] / scale[unit];
