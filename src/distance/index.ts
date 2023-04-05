@@ -8,6 +8,11 @@ const scale = {
   km: 1000000,
 };
 
+interface Format {
+  precision?: number;
+  unit?: boolean;
+}
+
 export class Distance {
   /**
    * Distance对象构造器
@@ -66,5 +71,110 @@ export class Distance {
       (this.value * factor - other.value) / factor,
       this.unit
     );
+  }
+
+  /**
+   * 显示格式化输出，如果没有指定精度，默认为2，如果没有指定单位，默认为true.
+   * @param precision - 指定精度
+   * @param unit - 指定是否显示单位
+   * @returns {string} - 格式化的字符串
+   */
+  format({ precision = 2, unit = true }: Format): string {
+    const value = this.value.toFixed(precision);
+    return unit ? value + this.unit : value;
+  }
+
+  /**
+   * Distance对象的单位转换为米
+   *
+   * @returns Distance - Distance对象
+   *
+   * @public
+   */
+  toM(): Distance {
+    return this.to("m");
+  }
+
+  /**
+   * Distance对象的单位转换为千米
+   *
+   * @returns Distance - Distance对象
+   *
+   * @public
+   */
+  toKm(): Distance {
+    return this.to("km");
+  }
+
+  /**
+   * Distance对象的单位转换为厘米
+   *
+   * @returns Distance - Distance对象
+   *
+   * @public
+   */
+  toCm(): Distance {
+    return this.to("cm");
+  }
+
+  /**
+   * Distance对象的单位转换为分米
+   *
+   * @returns Distance - Distance对象
+   *
+   * @public
+   */
+  toDm(): Distance {
+    return this.to("dm");
+  }
+
+  /**
+   * Distance的单位转换为毫米
+   *
+   * @returns Distance - Distance对象
+   *
+   * @public
+   */
+  toMm(): Distance {
+    return this.to("mm");
+  }
+
+  /**
+   * Distance对象的乘法
+   * @param factor number - 因子
+   *
+   * @returns Distance - Distance对象
+   *
+   * @public
+   */
+  mul(factor: number): Distance {
+    return new Distance(this.value * factor, this.unit);
+  }
+
+  /**
+   * Distance对象的除法
+   *
+   * @param factor: number - 除数
+   *
+   * @returns Distance - Distance对象
+   *
+   * @public
+   */
+  div(factor: number): Distance {
+    return new Distance(this.value / factor, this.unit);
+  }
+
+  /**
+   * Distance对象的单位转换为指定单位
+   *
+   * @param unit - 指定单位
+   *
+   * @returns Distance - Distance对象
+   *
+   * @private
+   */
+  private to(unit: Unit): Distance {
+    const factor = scale[this.unit] / scale[unit];
+    return new Distance(this.value * factor, unit);
   }
 }
