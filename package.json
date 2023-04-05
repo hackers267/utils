@@ -16,11 +16,11 @@
     "prebuild": "rimraf ./dist ./lib"
   },
   "files": [
-    "dist",
-    "lib",
-    "types"
+    "dist/index.js",
+    "dist/index.esm.js",
+    "dist/utils.d.ts"
   ],
-  "typings": "./types/index.d.ts",
+  "typings": "dist/utils.d.ts",
   "keywords": [
     "rxjs",
     "FP",
