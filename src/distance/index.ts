@@ -19,7 +19,12 @@ const scale = {
   km: 1000000,
 };
 
-interface Format {
+/**
+ * format的格式化参数
+ *
+ * @public
+ */
+export interface Format {
   precision?: number;
   unit?: boolean;
 }
@@ -97,6 +102,8 @@ export class Distance {
    * @param precision - 指定精度
    * @param unit - 指定是否显示单位
    * @returns - 格式化的字符串
+   *
+   * @see {@link Format}  格式化参数
    *
    * @public
    */

@@ -25,23 +25,18 @@ export function calcSex(no: string): "男" | "女";
 // @public
 export class Distance {
     add(other: Distance): Distance;
+
     div(factor: number): Distance;
 
-    // Warning: (ae-forgotten-export) The symbol "Format" needs to be exported by the entry point index.d.ts
     format({precision, unit}: Format): string;
 
     mul(factor: number): Distance;
-
     static new(value: number, unit?: DistanceUnit): Distance;
-
     sub(other: Distance): Distance;
     toCm(): Distance;
     toDm(): Distance;
-
     toKm(): Distance;
-
     toM(): Distance;
-
     toMm(): Distance;
 
     toString(): string;
@@ -54,6 +49,14 @@ export class Distance {
 
 // @public
 export type DistanceUnit = "mm" | "cm" | "dm" | "m" | "km";
+
+// @public
+export interface Format {
+    // (undocumented)
+    precision?: number;
+    // (undocumented)
+    unit?: boolean;
+}
 
 // @public
 export function isEven(n: number): boolean;
