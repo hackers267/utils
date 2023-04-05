@@ -5,10 +5,12 @@
   "main": "./dist/index.js",
   "module": "./lib/index.js",
   "scripts": {
+    "api": "api-extractor run --local",
     "test": "jest",
     "test:w": "jest --watch",
     "eslint": "eslint",
-    "build": "rollup -c rollup.config.js",
+    "build": "npm run package && npm run api",
+    "package": "rollup -c rollup.config.ts --configPlugin typescript",
     "release": "release-it",
     "prebuild": "rimraf ./dist ./lib"
   },
@@ -31,6 +33,7 @@
   "license": "ISC",
   "packageManage": "pnpm",
   "devDependencies": {
+    "@microsoft/api-extractor": "^7.34.4",
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-typescript": "^11.0.0",
