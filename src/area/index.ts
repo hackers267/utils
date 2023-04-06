@@ -1,3 +1,12 @@
+/**
+ * Area对象，用于对业务中对面积的一些封装使用，包括面积的计算、面积的字符串表示、面积的构造和加减运算。
+ */
+
+/**
+ * Area对象的单位。
+ *
+ * @public
+ */
 export type Unit = "mm2" | "cm2" | "dm2" | "m2" | "km2";
 const scale = {
   mm2: 1,
@@ -14,21 +23,49 @@ const unitString = {
   km2: "km²",
 };
 
+/**
+ * Area对象，用于对面积的一些封装使用，包括面积的计算、面积的字符串表示、面积的构造和加减运算。
+ *
+ * @public
+ */
 export class Area {
+  /**
+   * Area对象的构造器。其接收两个参数，一个是Area对象的值，一个是Area对象的单位。如果没有指定单位，其默认为&quot;m2&quot; (平方米)。
+   *
+   * @returns Area - Area对象
+   */
   private constructor(readonly value: number, readonly unit: Unit) {}
 
+  /**
+   *
+   * 用于创建Area对象的静态方法，返回一个新的Area对象。其接收两个参数，一个是Area对象的值，一个是Area对象的单位。如果没有指定单位，其默认为&quot;m2&quot; (平方米)。
+   *
+   * @param value  - Area对象的值
+   * @param unit - Area对象的单位 @see Unit
+   *
+   * @returns Area - Area对象
+   * @public
+   */
   static new(value: number, unit: Unit = "m2"): Area {
     return new Area(value, unit);
   }
 
+  /**
+   * Area的字符串表示
+   *
+   *
+   * @returns String - 一个拥有2个小数点和单位的字符串
+   * @public
+   */
   toString(): string {
     return this.value.toFixed(2) + unitString[this.unit];
   }
 
   /**
    * 两个面积相加
-   * @param other 另一个面积对象
+   * @param other - 另一个面积对象
    * @returns 返回两个面积对象的和
+   * @public
    */
   add(other: Area): Area {
     const factor = scale[this.unit] / scale[other.unit];
@@ -37,8 +74,9 @@ export class Area {
 
   /**
    * 两个面积相减
-   * @param other 另一个面积对象
+   * @param other - 另一个面积对象
    * @returns 返回两个面积对象的差
+   * @public
    */
   sub(other: Area): Area {
     const factor = scale[this.unit] / scale[other.unit];

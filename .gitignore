@@ -4,4 +4,6 @@ coverage
 lib
 dist
 .rollup.cache
-
+temp
+markdown
+types/tsdoc-metadata.json

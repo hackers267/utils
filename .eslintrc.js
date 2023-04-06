@@ -3,9 +3,9 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
-    jest: true,
   },
   extends: ["standard-with-typescript", "prettier"],
+  overrides: [],
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
@@ -14,6 +14,5 @@ module.exports = {
   plugins: ["prettier"],
   rules: {
     "prettier/prettier": "error",
-    "no-use-before-define": ["error", {functions: false}],
   },
 };
