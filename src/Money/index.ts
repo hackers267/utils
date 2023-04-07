@@ -13,7 +13,7 @@ export class Money {
    * @param {number | string} value - `value` 参数是 `number` 或 `string` 类型。它代表正在创建的货币对象的价值。
    * @returns 返回 `Money` 类的新实例
    */
-  public new(value: number | string): Money {
+  public static new(value: number | string): Money {
     const val = Number(value);
     return new Money(val);
   }
@@ -84,5 +84,9 @@ export class Money {
       minimumFractionDigits: precision,
       maximumFractionDigits: precision,
     }).format(this.value);
+  }
+
+  public toChinese(precision: number = 2): string {
+    return this.format("zh-CN", "CNY", precision);
   }
 }
