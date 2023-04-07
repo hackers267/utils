@@ -1,16 +1,16 @@
 # Utils
 
-各种可用方法的集合。抽象自业务中常用的方法和类型。
+Collection of commonly used functions。A collection of various available methods abstracted from commonly used methods and types in business.
 
-## 安装
+## Installation
 
-pnpm安装
+Install using pnpm
 
 ```shell
 pnpm add @silence_zhpf/utils
 ```
 
-npm安装
+install using npm 
 
 ```shell
 npm install @silence_zhpf/utils
