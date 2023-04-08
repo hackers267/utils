@@ -1,0 +1,17 @@
+{
+  "github": {
+    "release": true
+  },
+  "git": {
+    "commitMessage": "发布版本: v${version}"
+  },
+  "npm": {
+    "publish": false
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": "angular",
+      "infile": "CHANGELOG.md"
+    }
+  }
+}

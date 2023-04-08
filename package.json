@@ -3,7 +3,7 @@
   "version": "0.0.3",
   "description": "The common utils",
   "main": "./dist/index.js",
-  "module": "./lib/index.js",
+  "module": "./dist/index.esm.js",
   "scripts": {
     "api": "npm run package && api-extractor run --local",
     "doc": "npm run api && api-documenter markdown -i ./temp",
@@ -30,12 +30,20 @@
     "name": "silence_zhpf",
     "email": "silence_zhpf@aliyun.com"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "url": "https://github.com/hackers267/utils"
+  },
   "types": "./dist/index.d.ts",
   "license": "ISC",
   "packageManage": "pnpm",
   "devDependencies": {
     "@microsoft/api-documenter": "^7.21.7",
     "@microsoft/api-extractor": "^7.34.4",
+    "@release-it/conventional-changelog": "^5.1.1",
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-typescript": "^11.0.0",
