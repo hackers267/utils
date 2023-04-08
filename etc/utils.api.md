@@ -31,6 +31,7 @@ export class Distance {
     format({precision, unit}: Format): string;
 
     mul(factor: number): Distance;
+    multiply(other: Distance): Area;
     static new(value: number, unit?: DistanceUnit): Distance;
     sub(other: Distance): Distance;
     toCm(): Distance;
@@ -38,9 +39,7 @@ export class Distance {
     toKm(): Distance;
     toM(): Distance;
     toMm(): Distance;
-
     toString(): string;
-
     // (undocumented)
     readonly unit: DistanceUnit;
     // (undocumented)

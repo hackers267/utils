@@ -2,6 +2,8 @@
  * Distance对象, 包含一个值和一个单位。用于距离的表示和计算。
  */
 
+import { Area } from "../area";
+
 /**
  * 距离对象的具体单位
  *
@@ -11,6 +13,17 @@
  */
 type Unit = "mm" | "cm" | "dm" | "m" | "km";
 export type { Unit as DistanceUnit };
+
+type Unit2AreaUnit = Record<Unit, any>;
+
+const unit2AreaUnit: Unit2AreaUnit = {
+  mm: "mm2",
+  cm: "cm2",
+  dm: "dm2",
+  m: "m2",
+  km: "km2",
+};
+
 const scale = {
   mm: 1,
   cm: 10,
@@ -177,6 +190,18 @@ export class Distance {
    */
   mul(factor: number): Distance {
     return new Distance(this.value * factor, this.unit);
+  }
+
+  /**
+   * This function multiplies two distance values and returns the resulting area value.
+   * @param other - `other` is a `Distance`.
+   * @returns The `multiply` method is returning an `Area` object.
+   */
+  public multiply(other: Distance): Area {
+    const value = this.value * other.value;
+    const factor = scale[other.unit] / scale[this.unit];
+    const unit = unit2AreaUnit[this.unit];
+    return Area.new(value * factor, unit);
   }
 
   /**

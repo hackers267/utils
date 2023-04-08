@@ -217,3 +217,18 @@ describe("format", function () {
     expect(result).toBe("12.000");
   });
 });
+
+describe("Distance multiple", function () {
+  it("should with default format", function () {
+    const a = Distance.new(12);
+    const result = a.multiply(a);
+    expect(result.toString()).toBe("144.00m²");
+  });
+
+  it("should with different format", function () {
+    const a = Distance.new(12, "cm");
+    const b = Distance.new(12);
+    const result = a.multiply(b);
+    expect(result.toString()).toBe("14400.00cm²");
+  });
+});
