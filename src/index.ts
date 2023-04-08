@@ -8,3 +8,5 @@ export * from "./idCard";
 export * from "./simple";
 export * from "./area";
 export * from "./distance";
+export * from "./Money";
+export * from "./Digit";
