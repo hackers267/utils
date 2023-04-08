@@ -91,3 +91,23 @@ describe("format", () => {
     expect(result).toBe("1.000km");
   });
 });
+
+describe("toPercent", () => {
+  it("should return a percent representation of a digit", () => {
+    const digit = Digit.new(0.01);
+    const result = digit.toPercent();
+    expect(result).toBe("1%");
+  });
+
+  it("should return a percent representation of a digit with fractional digits", () => {
+    const digit = Digit.new(0.1);
+    const result = digit.toPercent(2);
+    expect(result).toBe("10.00%");
+  });
+
+  it("should return a percent representation of a digit which fractional is more", () => {
+    const digit = Digit.new(0.23456);
+    const result = digit.toPercent(2);
+    expect(result).toBe("23.46%");
+  });
+});

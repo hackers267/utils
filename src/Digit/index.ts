@@ -108,6 +108,20 @@ export class Digit {
   }
 
   /**
+   * 此函数以百分比的形式展示Digit对象的字符串表示。
+   * @param precision - 精度,默认值为2
+   * @returns 返回百分比表示的Digit对象
+   * @public
+   */
+  public toPercent(precision: number = 0): string {
+    return Intl.NumberFormat("zh-CN", {
+      style: "percent",
+      minimumFractionDigits: precision,
+      maximumFractionDigits: precision,
+    }).format(this.value);
+  }
+
+  /**
    * 该函数根据数字小数位的长度返回一个因子。
    * @param num - 我们要为其计算因子的输入数字。
    * @returns 函数 getFactor 将一个数字作为输入并返回一个可用于将数字转换为整数的因子。如果输入的数字有小数点，则系数计算为 10 的小数点后位数的次方。如果输入数字是整数，则因子为 1。
