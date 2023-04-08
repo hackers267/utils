@@ -1,6 +1,6 @@
 {
   "name": "@silence_zhpf/utils",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "The common utils",
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",
