@@ -73,11 +73,7 @@ export class Money {
    * @returns 一个字符串，表示当前金额。
    * @internal
    */
-  private format(
-    locales: string,
-    currency: string,
-    precision: number = 2
-  ): string {
+  private format(locales: string, currency: string, precision: number): string {
     return Intl.NumberFormat(locales, {
       style: "currency",
       currency,
