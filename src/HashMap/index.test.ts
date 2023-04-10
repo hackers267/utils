@@ -100,3 +100,63 @@ describe("HashMap map value", () => {
     expect(fn).toBeCalledTimes(2);
   });
 });
+
+describe("HashMap filter", () => {
+  test("filter", () => {
+    const map = HashMap.new<number, string>();
+    map.insert(1, "one");
+    map.insert(2, "two");
+    const strings = map.filter(([, value]) => value === "one");
+    expect(strings.get(1)).toEqual("one");
+    expect(strings.has(2)).toBeFalsy();
+  });
+
+  test("filter fn", () => {
+    const map = HashMap.new<number, string>();
+    map.insert(1, "one");
+    map.insert(2, "two");
+    const fn = jest.fn();
+    map.filter(fn);
+    expect(fn).toBeCalledTimes(2);
+  });
+});
+
+describe("HashMap filter key", () => {
+  test("filter key", () => {
+    const map = HashMap.new<number, string>();
+    map.insert(1, "one");
+    map.insert(2, "two");
+    const strings = map.filterKey((key) => key === 1);
+    expect(strings.get(1)).toEqual("one");
+    expect(strings.has(2)).toBeFalsy();
+  });
+
+  test("filter key fn", () => {
+    const map = HashMap.new<number, string>();
+    map.insert(1, "one");
+    map.insert(2, "two");
+    const fn = jest.fn();
+    map.filterKey(fn);
+    expect(fn).toBeCalledTimes(2);
+  });
+});
+
+describe("HashMap filter value", () => {
+  test("filter value", () => {
+    const map = HashMap.new<number, string>();
+    map.insert(1, "one");
+    map.insert(2, "two");
+    const strings = map.filterValue((value) => value === "two");
+    expect(strings.get(2)).toEqual("two");
+    expect(strings.has(1)).toBeFalsy();
+  });
+
+  test("filter value fn", () => {
+    const map = HashMap.new<number, string>();
+    map.insert(1, "one");
+    map.insert(2, "two");
+    const fn = jest.fn();
+    map.filterValue(fn);
+    expect(fn).toBeCalledTimes(2);
+  });
+});

@@ -87,4 +87,70 @@ export class HashMap<T, U> {
   public mapValue<R>(fn: (value: U, index: number, array: U[]) => R): R[] {
     return Array.from(this.innerMap.values()).map(fn);
   }
+
+  /**
+   * 此函数根据给定条件过滤 `HashMap` 中的键值对，并返回过滤后的对的新 `HashMap`。
+   * @param fn - 接受三个参数的函数：第一个参数是一个类型为`[T,U]`的元组，第二个参数是一个整数，第三个参数是一个数组。
+   * @returns `filter` 方法返回过滤键值对后的 `HashMap` 类的新实例。
+   */
+  public filter(
+    fn: (value: [T, U], index: number, array: Array<[T, U]>) => boolean
+  ): HashMap<T, U> {
+    const array = this.toArray().filter(fn);
+    return new HashMap<T, U>(array);
+  }
+
+  /**
+   * 此函数根据给定条件过滤 `HashMap` 的键，并返回过滤后的新`HashMap`。
+   * @param fn - 接受三个参数的函数：第一个参数是键，第二个参数是一个整数，第三个参数是一个数组。
+   * @returns HashMap 类的一个新实例。
+   */
+  public filterKey(
+    fn: (value: T, index: number, array: T[]) => boolean
+  ): HashMap<T, U> {
+    const keyValue = this.toKeyArray();
+    const array = this.toArray().filter(([key], index) =>
+      fn(key, index, keyValue)
+    );
+    return new HashMap<T, U>(array);
+  }
+
+  /**
+   * 此函数根据给定条件过滤 `HashMap` 的值并返回过滤后的新的`HashMap`。
+   * @param fn - 接受三个参数的函数：第一个参数是值，第二个参数是一个索引，第三个参数是一个数组。
+   * @returns `filterValue` 方法返回一个新的 `HashMap` 实例。
+   */
+  public filterValue(
+    fn: (value: U, index: number, array: U[]) => boolean
+  ): HashMap<T, U> {
+    const valueArray = this.toValueArray();
+    const array = this.toArray().filter(([key, value], index) =>
+      fn(value, index, valueArray)
+    );
+    return new HashMap<T, U>(array);
+  }
+
+  /**
+   * 此函数将 `HashMap` 对象转换为元组数组。
+   * @returns `toArray()` 方法返回一个元组数组，每个元组的类型是“[T, U]”，其中“T”是映射中键的类型，“U”是映射中值的类型。
+   */
+  private toArray(): Array<[T, U]> {
+    return Array.from(this.innerMap);
+  }
+
+  /**
+   * 此函数从 Map 对象返回一个键数组。
+   * @returns `toKeyArray()` 方法返回一个类型为 `T` 的数组，其中包含`HashMap` 属性的所有键。。
+   */
+  private toKeyArray(): T[] {
+    return Array.from(this.innerMap.keys());
+  }
+
+  /**
+   * 此函数从 Map 对象返回值数组。
+   * @returns `toValueArray()` 方法从 `innerMap` 对象返回一个类型为 `U` 的值数组。 其中包含`HashMap` 属性的所有值。
+   */
+  private toValueArray(): U[] {
+    return Array.from(this.innerMap.values());
+  }
 }
