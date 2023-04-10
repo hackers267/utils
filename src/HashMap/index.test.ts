@@ -62,3 +62,41 @@ describe("HashMap map", () => {
     expect(fn).toBeCalledTimes(2);
   });
 });
+
+describe("HashMap map key", () => {
+  test("map key", () => {
+    const map = HashMap.new<number, string>();
+    map.insert(1, "one");
+    map.insert(2, "two");
+    const strings = map.mapKey((value) => value * 2);
+    expect(strings).toEqual([2, 4]);
+  });
+
+  test("map key fn", () => {
+    const map = HashMap.new<number, string>();
+    map.insert(1, "one");
+    map.insert(2, "two");
+    const fn = jest.fn();
+    map.mapKey(fn);
+    expect(fn).toBeCalledTimes(2);
+  });
+});
+
+describe("HashMap map value", () => {
+  test("map value", () => {
+    const map = HashMap.new<number, string>();
+    map.insert(1, "one");
+    map.insert(2, "two");
+    const strings = map.mapValue((value) => value + "!");
+    expect(strings).toEqual(["one!", "two!"]);
+  });
+
+  test("map value fn", () => {
+    const map = HashMap.new<number, string>();
+    map.insert(1, "one");
+    map.insert(2, "two");
+    const fn = jest.fn();
+    map.mapValue(fn);
+    expect(fn).toBeCalledTimes(2);
+  });
+});

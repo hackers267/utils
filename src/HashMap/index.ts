@@ -69,4 +69,22 @@ export class HashMap<T, U> {
   ): R[] {
     return Array.from(this.innerMap).map(fn);
   }
+
+  /**
+   * 此函数使用提供的函数将 `HashMap` 对象的键映射到新数组。
+   * @param fn - `fn` 是一个接受三个参数的函数：键的“值”、键的“索引”和键的整个“数组”。
+   * @returns `mapKey` 方法返回一个类型为 `R[]` 的数组
+   */
+  public mapKey<R>(fn: (value: T, index: number, array: T[]) => R): R[] {
+    return Array.from(this.innerMap.keys()).map(fn);
+  }
+
+  /**
+   * 此函数使用提供的函数将`HashMap`对象的值映射到新数组。
+   * @param fn - 接受三个参数的函数：值的“值”、键的“索引”和键的整个“数组”。
+   * @returns `mapValue` 方法返回一个值数组。
+   */
+  public mapValue<R>(fn: (value: U, index: number, array: U[]) => R): R[] {
+    return Array.from(this.innerMap.values()).map(fn);
+  }
 }
