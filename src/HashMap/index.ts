@@ -138,6 +138,12 @@ export class HashMap<T, U> {
     return new HashMap<T, U>(array);
   }
 
+  *[Symbol.iterator](): IterableIterator<[T, U]> {
+    for (const [key, value] of Array.from(this.innerMap)) {
+      yield [key, value];
+    }
+  }
+
   /**
    * 此函数将 `HashMap` 对象转换为元组数组。
    * @returns `toArray()` 方法返回一个元组数组，每个元组的类型是“[T, U]”，其中“T”是映射中键的类型，“U”是映射中值的类型。

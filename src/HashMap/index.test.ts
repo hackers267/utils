@@ -170,3 +170,20 @@ describe("HashMap size", () => {
     expect(map.size).toBe(2);
   });
 });
+
+describe("HashMap iterator", () => {
+  test("iterator", () => {
+    const map = HashMap.new<number, string>();
+    map.insert(1, "one");
+    map.insert(2, "two");
+    const fn = jest.fn();
+    for (const item of map) {
+      fn(item);
+    }
+
+    expect(fn).toBeCalledTimes(2);
+    expect(fn).toBeCalledWith([1, "one"]);
+    expect(fn).toBeCalledWith([2, "two"]);
+    expect(fn).not.toBeCalledWith([3, "three"]);
+  });
+});
