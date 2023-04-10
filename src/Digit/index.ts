@@ -1,4 +1,8 @@
 /**
+ * 数值类，用于数值的表示和计算等。
+ */
+
+/**
  * Digit的格式化参数
  * - precision: 小数点后的位数
  * - unit: 单位
@@ -9,6 +13,9 @@ export interface DigitFormat {
   unit?: string;
 }
 
+/**
+ * 数值类，用于数值的表示和计算等。
+ */
 export class Digit {
   /**
    * 这是 TypeScript 中的私有构造函数，它接受一个数字参数并将其分配给私有只读属性。

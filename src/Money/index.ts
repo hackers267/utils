@@ -1,4 +1,10 @@
-/* `Money` 类表示货币值，并提供用于创建、添加、减去、格式化以及将值转换为字符串的方法。 */
+/**
+ * `Money` 类表示货币值，并提供用于创建、添加、减去、格式化以及将值转换为字符串的方法。
+ */
+
+/**
+ * `Money` 类表示货币值，并提供用于创建、添加、减去、格式化以及将值转换为字符串的方法。
+ */
 export class Money {
   /**
    * 构建器，接收一个数值，返回一个Money对象
@@ -65,6 +71,10 @@ export class Money {
     return `${this.value}`;
   }
 
+  public toChinese(precision: number = 2): string {
+    return this.format("zh-CN", "CNY", precision);
+  }
+
   /**
    * 格式化金额
    * @param locales - 地域
@@ -80,9 +90,5 @@ export class Money {
       minimumFractionDigits: precision,
       maximumFractionDigits: precision,
     }).format(this.value);
-  }
-
-  public toChinese(precision: number = 2): string {
-    return this.format("zh-CN", "CNY", precision);
   }
 }

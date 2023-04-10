@@ -1,4 +1,10 @@
-/* 该类在 TypeScript 中实现哈希映射数据结构。 */
+/**
+ *  该类在 TypeScript 中实现哈希映射数据结构。
+ */
+
+/**
+ *  该类在 TypeScript 中实现哈希映射数据结构。
+ */
 export class HashMap<T, U> {
   private readonly innerMap: Map<T, U>;
 
