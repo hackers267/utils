@@ -11,6 +11,14 @@ export class HashMap<T, U> {
   }
 
   /**
+   * 返回此`HashMap`的大小
+   * @returns `size`返回此`HashMap`的大小
+   */
+  public get size(): number {
+    return this.innerMap.size;
+  }
+
+  /**
    * 此函数使用可选数组参数创建 `HashMap` 的新实例。
    * @param array - “array”参数是一个可选的元组数组，其中每个元组的第一个元素是“T”类型，第二个元素是“U”类型。该数组用于初始化 `HashMap` 类的新实例。如果没有提供数组，一个空的`HashMap`
    * @returns `HashMap` 类的新实例，将指定的键值对数组作为其初始数据。

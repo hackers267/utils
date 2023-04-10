@@ -160,3 +160,13 @@ describe("HashMap filter value", () => {
     expect(fn).toBeCalledTimes(2);
   });
 });
+
+describe("HashMap size", () => {
+  test("size", () => {
+    const map = HashMap.new<number, string>();
+    expect(map.size).toBe(0);
+    map.insert(1, "one");
+    map.insert(2, "two");
+    expect(map.size).toBe(2);
+  });
+});
