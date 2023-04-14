@@ -79,6 +79,96 @@ export class HashSet<T> {
   }
 
   /**
+   * 该函数检查数据结构是否为空并返回布尔值。
+   * @returns 一个布尔值，表示`HashSet`是否为空。
+   */
+  public isEmpty(): boolean {
+    return this.size === 0;
+  }
+
+  /**
+   * “clear”函数清除集合中的所有元素。
+   */
+  public clear(): void {
+    this.innerSet.clear();
+  }
+
+  /**
+   * 此函数检查此 `HashSet` 是否是另一个 `HashSet` 的子集。
+   * @param other - other 另一个`HashSet<T>`对象。
+   * @returns `HashSet`是否是另一个`HashSet`的子集。
+   */
+  public isSubset(other: HashSet<T>): boolean {
+    return this.toArray().every((v) => other.has(v));
+  }
+
+  /**
+   * 此函数检查此`HashSet`是否是另一个`HashSet`的超集。
+   * @param other - other 是一个 T 类型的 HashSet，表示要检查的集合是否是当前 HashSet 的子集。
+   * @returns `isSuperset` 函数返回一个布尔值。如果调用该函数的 `HashSet` 是作为参数传递的 `other` `HashSet` 的超集，则返回 `true`，否则返回 `false`。
+   */
+  public isSuperset(other: HashSet<T>): boolean {
+    return other.isSubset(this);
+  }
+
+  /**
+   * 该函数返回一个新的 HashSet，它是当前 HashSet 和另一个 HashSet 的并集。
+   * @param other - 另一个`HashSet<T>`对象。
+   * @returns 两个`HashSet`的并集。
+   */
+  public union(other: HashSet<T>): HashSet<T> {
+    return new HashSet<T>(this.toArray().concat(other.toArray()));
+  }
+
+  /**
+   * 该函数返回一个新的 HashSet，其中包含当前 HashSet 但不在另一个 HashSet 中的元素。
+   * @param other - 另一个`HashSet`对象。
+   * @returns 两个`HashSet`的差集。
+   */
+  public difference(other: HashSet<T>): HashSet<T> {
+    return this.filter((v) => !other.has(v));
+  }
+
+  /**
+   * 该函数返回一个新的 HashSet，它包含当前 HashSet 和另一个 HashSet 的交集。
+   * @param other - 另一个`HashSet`对象。
+   * @returns 两个`HashSet`的交集。
+   */
+  public intersection(other: HashSet<T>): HashSet<T> {
+    return this.filter((v) => other.has(v));
+  }
+
+  /**
+   * 此函数返回两个哈希集之间的对称差异。
+   * @param other - 另一个`HashSet`对象。
+   * @returns 一个新的 HashSet，它包含当前 HashSet 和作为参数传递的另一个 HashSet 之间的对称差异。
+   */
+  public symmetricDifference(other: HashSet<T>): HashSet<T> {
+    return this.union(other).difference(this.intersection(other));
+  }
+
+  /**
+   * 此函数判断两个`HashSet`是否相等
+   * @param other - 另一个`HashSet`对象。
+   * @returns 两个`HashSet`是否相等。
+   */
+  public isEqual(other: HashSet<T>): boolean {
+    if (this.size !== other.size) {
+      return false;
+    }
+    return this.isSubset(other) && this.isSuperset(other);
+  }
+
+  /**
+   * 此函数将给定函数应用于数组的每个元素。
+   * @param fn - 参数 `fn` 是一个接受三个参数的函数：`value`、`index` 和 `array`。它是一个回调函数，将为数组中的每个元素调用。 `value` 参数表示当前正在处理的元素，`index`
+   * 表示该元素的索引
+   */
+  public forEach(fn: (value: T, index: number, array: T[]) => void): void {
+    this.toArray().forEach(fn);
+  }
+
+  /**
    * 该函数将 Set 转换为数组。
    * @returns 转换后的数组。
    */
