@@ -11,3 +11,4 @@ export * from "./distance";
 export * from "./Money";
 export * from "./Digit";
 export * from "./HashMap";
+export * from "./HashSet";
