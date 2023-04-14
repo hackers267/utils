@@ -2,6 +2,8 @@
  * HashSet
  */
 
+import { HashMap } from "../HashMap";
+
 /**
  * HashSet 类是 TypeScript 中的一个通用类，它创建一个具有唯一元素的新集合。
  */
@@ -28,6 +30,31 @@ export class HashSet<T> {
    */
   public static new<T>(array?: T[]): HashSet<T> {
     return new HashSet<T>(array);
+  }
+
+  /**
+   * 此函数将 `HashMap` 转换为 TypeScript 中的 `HashSet`。
+   * @param map - `HashMap` 类的实例。
+   * @returns HashSet 类的新实例，其中包含输入 HashMap 中的键。
+   */
+  public static fromHashMap<T, U>(map: HashMap<T, U>): HashSet<T> {
+    const array = map.mapKey((v) => v);
+    return new HashSet<T>(array);
+  }
+
+  /**
+   * 此函数将 HashMap 的值转换为 HashSet。
+   * @param map - `HashMap` 类的实例。
+   * @returns 一个新的“HashSet”对象，包含来自输入“HashMap”的所有值。
+   */
+  public static fromHashMapValue<T, U>(map: HashMap<T, U>): HashSet<U> {
+    const array = map.mapValue((v) => v);
+    return new HashSet<U>(array);
+  }
+
+  public toHashMap(): HashMap<T, T> {
+    const array: Array<[T, T]> = this.map((v) => [v, v]);
+    return HashMap.new<T, T>(array);
   }
 
   /**

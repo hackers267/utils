@@ -1,4 +1,5 @@
 import { HashSet } from "./index";
+import { HashMap } from "../HashMap";
 
 describe("HashSet Init", function () {
   it("init with an empty array", function () {
@@ -258,5 +259,44 @@ describe("HashSet forEach", function () {
     expect(callback.mock.calls[0][0]).toBe(1);
     expect(callback.mock.calls[1][0]).toBe(2);
     expect(callback.mock.calls[2][0]).toBe(3);
+  });
+});
+
+describe("HashSet from HashMap", () => {
+  it("fromHashMap", () => {
+    const map = HashMap.new<number, number>();
+    map.insert(1, 4);
+    map.insert(2, 5);
+    map.insert(3, 6);
+    const set = HashSet.fromHashMap(map);
+    expect(set.size).toBe(3);
+    expect(set.has(1)).toBeTruthy();
+    expect(set.has(2)).toBeTruthy();
+    expect(set.has(3)).toBeTruthy();
+  });
+});
+
+describe("HashSet from HashMapValue", () => {
+  it("fromHashMapValue", () => {
+    const map = HashMap.new<number, number>();
+    map.insert(1, 4);
+    map.insert(2, 5);
+    map.insert(3, 6);
+    const set = HashSet.fromHashMapValue(map);
+    expect(set.size).toBe(3);
+    expect(set.has(4)).toBeTruthy();
+    expect(set.has(5)).toBeTruthy();
+    expect(set.has(6)).toBeTruthy();
+  });
+});
+
+describe("HashMap to HashMap", () => {
+  it("toHashMap", () => {
+    const set = HashSet.new([1, 2, 3]);
+    const map = set.toHashMap();
+    expect(map.size).toBe(3);
+    expect(map.get(1)).toBe(1);
+    expect(map.get(2)).toBe(2);
+    expect(map.get(3)).toBe(3);
   });
 });
