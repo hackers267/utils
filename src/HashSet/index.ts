@@ -6,6 +6,7 @@ import { HashMap } from "../HashMap";
 
 /**
  * HashSet 类是 TypeScript 中的一个通用类，它创建一个具有唯一元素的新集合。
+ * @public
  */
 export class HashSet<T> {
   private readonly innerSet: Set<T>;
@@ -26,7 +27,7 @@ export class HashSet<T> {
 
   /**
    * 使用可选的元素数组创建一个`HashSet`对象
-   * @param [array] - 参数“array”是类型“T”的可选数组。如果提供，它将用于使用数组的元素初始化一个新的“Set”对象。如果未提供，将创建一个空的“Set”对象。 `T` 类型是泛型类型参数
+   * @param array - 参数“array”是类型“T”的可选数组。如果提供，它将用于使用数组的元素初始化一个新的“Set”对象。如果未提供，将创建一个空的“Set”对象。 `T` 类型是泛型类型参数
    */
   public static new<T>(array?: T[]): HashSet<T> {
     return new HashSet<T>(array);

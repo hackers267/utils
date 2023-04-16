@@ -4,13 +4,14 @@
 
 /**
  *  该类在 TypeScript 中实现哈希映射数据结构。
+ *  @public
  */
 export class HashMap<T, U> {
   private readonly innerMap: Map<T, U>;
 
   /**
    * 这是一个私有构造函数，它使用可选的键值对数组初始化 Map 对象。
-   * @param array - 参数“array”是一个可选的元组数组，其中每个元组包含两个类型为“T”和“U”的值。该数组用于使用元组中的键值对初始化新的“Map”对象。如果没有提供`array`，一个空的`Map
+   * @param array - 参数“array”是一个可选的元组数组，其中每个元组包含两个类型为“T”和“U”的值。
    */
   private constructor(array?: Array<[T, U]>) {
     this.innerMap = new Map<T, U>(array);
@@ -77,6 +78,21 @@ export class HashMap<T, U> {
    * 这是一个 TypeScript 函数，它映射`HashMap`并根据提供的函数返回不同类型的新数组。
    * @param fn - 接受三个参数的函数：第一个参数是一个类型为`[T,U]`的元组，第二个参数是一个整数，第三个参数是一个数组。
    * @returns `map` 方法返回一个类型为 `R[]` 的数组
+   *
+   * @remarks
+   *
+   * 因为`HashMap`的Map方法返回的是一个`R`类型的数组，为了可以在链式调用中可以再使用`HashMap`，可以利用数组的`reduce`方式重新把`R`类型的数组转为`HashMap`对象。
+   *
+   * @example
+   *
+   * ```ts
+   * const hashMap = HashMap.new([[1,2],[3,4],[5,6]]);
+   * hashMap.map(([a,b])=>a+b)
+   *        .reduce((acc,cur)=>{
+   *            acc.insert(cur,`${cur}`);
+   *            return acc;
+   *        },HashMap.new<number,string>())
+   * ```
    */
   public map<R>(
     fn: (value: [T, U], index: number, array: Array<[T, U]>) => R
