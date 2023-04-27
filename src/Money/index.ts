@@ -1,4 +1,12 @@
-/* `Money` 类表示货币值，并提供用于创建、添加、减去、格式化以及将值转换为字符串的方法。 */
+/**
+ * `Money` 类表示货币值，并提供用于创建、添加、减去、格式化以及将值转换为字符串的方法。
+ * @public
+ */
+
+/**
+ * `Money` 类表示货币值，并提供用于创建、添加、减去、格式化以及将值转换为字符串的方法。
+ * @public
+ */
 export class Money {
   /**
    * 构建器，接收一个数值，返回一个Money对象
@@ -10,7 +18,7 @@ export class Money {
 
   /**
    * 此函数创建具有给定值的 Money 类的新实例。
-   * @param {number | string} value - `value` 参数是 `number` 或 `string` 类型。它代表正在创建的货币对象的价值。
+   * @param value - `value` 参数是 `number` 或 `string` 类型。它代表正在创建的货币对象的价值。
    * @returns 返回 `Money` 类的新实例
    */
   public static new(value: number | string): Money {
@@ -20,7 +28,7 @@ export class Money {
 
   /**
    * 此函数将两个 Money 对象的值相加并返回一个新的 Money 对象及其总和。
-   * @param {Money} other - Money 对象，表示要添加到当前 Money 对象的金额。
+   * @param  other - Money 对象，表示要添加到当前 Money 对象的金额。
    * @returns Money 类的新实例，将当前实例和另一个实例的值之和作为参数传递。
    */
   public add(other: Money): Money {
@@ -65,6 +73,10 @@ export class Money {
     return `${this.value}`;
   }
 
+  public toChinese(precision: number = 2): string {
+    return this.format("zh-CN", "CNY", precision);
+  }
+
   /**
    * 格式化金额
    * @param locales - 地域
@@ -80,9 +92,5 @@ export class Money {
       minimumFractionDigits: precision,
       maximumFractionDigits: precision,
     }).format(this.value);
-  }
-
-  public toChinese(precision: number = 2): string {
-    return this.format("zh-CN", "CNY", precision);
   }
 }

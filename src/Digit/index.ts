@@ -1,4 +1,9 @@
 /**
+ * 数值类，用于数值的表示和计算等。
+ * @public
+ */
+
+/**
  * Digit的格式化参数
  * - precision: 小数点后的位数
  * - unit: 单位
@@ -9,10 +14,14 @@ export interface DigitFormat {
   unit?: string;
 }
 
+/**
+ * 数值类，用于数值的表示和计算等。
+ * @public
+ */
 export class Digit {
   /**
    * 这是 TypeScript 中的私有构造函数，它接受一个数字参数并将其分配给私有只读属性。
-   * @param {number} innerValue - 参数“innerValue”是 TypeScript 类构造函数中类型为数字的私有只读属性。用于初始化类实例的值，只能在类内访问。 `private`
+   * @param  innerValue - 参数“innerValue”是 TypeScript 类构造函数中类型为数字的私有只读属性。用于初始化类实例的值，只能在类内访问。 `private`
    * 关键字确保该属性在类外不可访问，而 `readonly`
    */
   private constructor(private readonly innerValue: number) {}
@@ -23,7 +32,7 @@ export class Digit {
 
   /**
    * 该函数使用给定值创建 Digit 类的新实例。
-   * @param {number} value - “值”参数是一个数字，表示数字的值。它用于创建“Digit”类的新实例。
+   * @param  value - “值”参数是一个数字，表示数字的值。它用于创建“Digit”类的新实例。
    * @returns 具有指定“value”参数的“Digit”类的新实例。
    */
   static new(value: number): Digit {

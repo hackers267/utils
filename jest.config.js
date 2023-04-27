@@ -4,4 +4,12 @@ module.exports = {
   testEnvironment: "node",
   collectCoverage: true,
   rootDir: "./src",
+  coverageThreshold: {
+    global: {
+      functions: 95,
+      statements: 95,
+      branches: 95,
+      lines: 95,
+    },
+  },
 };

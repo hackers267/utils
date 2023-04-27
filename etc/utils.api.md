@@ -7,9 +7,13 @@
 // @public
 export class Area {
     add(other: Area): Area;
+
     static new(value: number, unit?: Unit): Area;
+
     sub(other: Area): Area;
+
     toString(): string;
+
     // (undocumented)
     readonly unit: Unit;
     // (undocumented)
@@ -23,6 +27,38 @@ export function calcBirthday(no: string): string;
 export function calcSex(no: string): "男" | "女";
 
 // @public
+export class Digit {
+    add(other: Digit): Digit;
+
+    divide(other: Digit): Digit;
+
+    equals(other: Digit): boolean;
+
+    format({precision, unit}: DigitFormat): string;
+
+    multiply(other: Digit): Digit;
+
+    static new(value: number): Digit;
+
+    subtract(other: Digit): Digit;
+
+    toPercent(precision?: number): string;
+
+    toString(): string;
+
+    // (undocumented)
+    get value(): number;
+}
+
+// @public
+export interface DigitFormat {
+    // (undocumented)
+    precision?: number;
+    // (undocumented)
+    unit?: string;
+}
+
+// @public
 export class Distance {
     add(other: Distance): Distance;
 
@@ -31,15 +67,25 @@ export class Distance {
     format({precision, unit}: Format): string;
 
     mul(factor: number): Distance;
+
     multiply(other: Distance): Area;
+
     static new(value: number, unit?: DistanceUnit): Distance;
+
     sub(other: Distance): Distance;
+
     toCm(): Distance;
+
     toDm(): Distance;
+
     toKm(): Distance;
+
     toM(): Distance;
+
     toMm(): Distance;
+
     toString(): string;
+
     // (undocumented)
     readonly unit: DistanceUnit;
     // (undocumented)
@@ -58,6 +104,80 @@ export interface Format {
 }
 
 // @public
+export class HashMap<T, U> {
+    // (undocumented)
+    [Symbol.iterator](): IterableIterator<[T, U]>;
+
+    filter(fn: (value: [T, U], index: number, array: Array<[T, U]>) => boolean): HashMap<T, U>;
+
+    filterKey(fn: (value: T, index: number, array: T[]) => boolean): HashMap<T, U>;
+
+    filterValue(fn: (value: U, index: number, array: U[]) => boolean): HashMap<T, U>;
+
+    get(key: T): U | undefined;
+
+    has(key: T): boolean;
+
+    insert(key: T, value: U): HashMap<T, U>;
+
+    map<R>(fn: (value: [T, U], index: number, array: Array<[T, U]>) => R): R[];
+
+    mapKey<R>(fn: (value: T, index: number, array: T[]) => R): R[];
+
+    mapValue<R>(fn: (value: U, index: number, array: U[]) => R): R[];
+
+    static new<T, U>(array?: Array<[T, U]>): HashMap<T, U>;
+
+    remove(key: T): U | undefined;
+
+    get size(): number;
+}
+
+// @public
+export class HashSet<T> {
+    add(v: T): HashSet<T>;
+
+    clear(): void;
+
+    difference(other: HashSet<T>): HashSet<T>;
+
+    filter(fn: (value: T, index: number, array: T[]) => boolean): HashSet<T>;
+
+    forEach(fn: (value: T, index: number, array: T[]) => void): void;
+
+    static fromHashMap<T, U>(map: HashMap<T, U>): HashSet<T>;
+
+    static fromHashMapValue<T, U>(map: HashMap<T, U>): HashSet<U>;
+
+    has(v: T): boolean;
+
+    intersection(other: HashSet<T>): HashSet<T>;
+
+    isEmpty(): boolean;
+
+    isEqual(other: HashSet<T>): boolean;
+
+    isSubset(other: HashSet<T>): boolean;
+
+    isSuperset(other: HashSet<T>): boolean;
+
+    map<R>(fn: (value: T, index: number, array: T[]) => R): R[];
+
+    static new<T>(array?: T[]): HashSet<T>;
+
+    remove(v: T): HashSet<T>;
+
+    get size(): number;
+
+    symmetricDifference(other: HashSet<T>): HashSet<T>;
+
+    // (undocumented)
+    toHashMap(): HashMap<T, T>;
+
+    union(other: HashSet<T>): HashSet<T>;
+}
+
+// @public
 export function isEven(n: number): boolean;
 
 // @public
@@ -68,6 +188,24 @@ export function isOdd(n: number): boolean;
 
 // @public
 export function isTrue(value: any): boolean;
+
+// @public
+export class Money {
+    add(other: Money): Money;
+
+    div(factor: number): Money;
+
+    mul(factor: number): Money;
+
+    static new(value: number | string): Money;
+
+    sub(other: Money): Money;
+
+    // (undocumented)
+    toChinese(precision?: number): string;
+
+    toString(): string;
+}
 
 // @public
 export type Unit = "mm2" | "cm2" | "dm2" | "m2" | "km2";

@@ -1,6 +1,6 @@
-/*
+/**
  * 业务中经常使用到一些常用的工具函数和自定义类型
- * */
+ */
 
 export * from "./bool";
 export * from "./func";
@@ -11,3 +11,4 @@ export * from "./distance";
 export * from "./Money";
 export * from "./Digit";
 export * from "./HashMap";
+export * from "./HashSet";
