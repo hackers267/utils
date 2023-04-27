@@ -1,5 +1,14 @@
 
 
+## [0.0.6](https://github.com/hackers267/utils/compare/0.0.5...0.0.6) (2023-04-27)
+
+
+### Features
+
+* ✨ 实现HashMap类型 ([833461b](https://github.com/hackers267/utils/commit/833461ba11058c03d347b4e3fb146de50a31c404)), closes [#11](https://github.com/hackers267/utils/issues/11)
+* ✨ 实现HashSet类型 ([b438031](https://github.com/hackers267/utils/commit/b438031b1deff52819d981a7c3063e21ad884c68)), closes [#13](https://github.com/hackers267/utils/issues/13)
+* ✨ 为HashSet添加多个方法： ([6cb5288](https://github.com/hackers267/utils/commit/6cb5288f2d2b167d533e2bc2d1f01c1d7be90890))
+
 ## [0.0.5](https://github.com/hackers267/utils/compare/0.0.4...0.0.5) (2023-04-08)
 
 ## 0.0.4 (2023-04-08)
