@@ -16,6 +16,20 @@ describe("Digit add", () => {
   });
 });
 
+describe("Digit static", () => {
+  it("should create a new Digit object which value is 1", () => {
+    const digit = Digit.one();
+    expect(digit).toBeInstanceOf(Digit);
+    expect(digit.value).toBe(1);
+  });
+
+  it("should create a new Digit object which value is 0", () => {
+    const digit = Digit.zero();
+    expect(digit).toBeInstanceOf(Digit);
+    expect(digit.value).toBe(0);
+  });
+});
+
 describe("Digit subtract", () => {
   it("should subtract two digits", () => {
     const digit1 = Digit.new(1);

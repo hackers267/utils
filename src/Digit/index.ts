@@ -24,7 +24,7 @@ export class Digit {
    * @param  innerValue - 参数“innerValue”是 TypeScript 类构造函数中类型为数字的私有只读属性。用于初始化类实例的值，只能在类内访问。 `private`
    * 关键字确保该属性在类外不可访问，而 `readonly`
    */
-  private constructor(private readonly innerValue: number) {}
+  private constructor(private readonly innerValue: number) { }
 
   public get value(): number {
     return this.innerValue;
@@ -37,6 +37,24 @@ export class Digit {
    */
   static new(value: number): Digit {
     return new Digit(value);
+  }
+
+  /**
+   * 该函数返回一个零值的 Digit 类。
+   * @returns 具有零值的“Digit”类的新实例。
+   * @public
+   */
+  static zero(): Digit {
+    return Digit.new(0);
+  }
+
+  /**
+   * 该函数返回一个值为1的 Digit 类。
+   * @returns 具有值为1的“Digit”类的新实例。
+   * @public
+   */
+  static one(): Digit {
+    return Digit.new(1);
   }
 
   /**
